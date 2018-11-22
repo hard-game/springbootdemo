@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Component(value = "userMapper")
 public interface UserMapper {
 
-    public User find(@Param("id") int id);
+    User find(@Param("id") int id);
+    User findByName(String name);
 
 }

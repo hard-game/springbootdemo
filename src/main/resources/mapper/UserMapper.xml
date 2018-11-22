@@ -8,4 +8,8 @@
 		SELECT * FROM user WHERE ID = #{id}
 	</select>
 
+	<select id="findByName" parameterType="String" resultType="com.shilei.springbootdemo.entity.User">
+		SELECT * FROM user WHERE name = #{name}
+	</select>
+
 </mapper>

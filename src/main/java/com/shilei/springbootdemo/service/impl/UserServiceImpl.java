@@ -17,4 +17,15 @@ public class UserServiceImpl implements UserService {
     public User find(int id){
         return userMapper.find(id);
     }
+
+    @Override
+    public boolean login(String name,String password){
+        User user=userMapper.findByName(name);
+        if(user==null)
+            return false;
+        if(user.getPassword().equals(password))
+            return true;
+        else
+            return false;
+    }
 }
