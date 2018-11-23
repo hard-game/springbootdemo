@@ -2,6 +2,7 @@ package com.shilei.springbootdemo.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @WebFilter(filterName = "BaseFilter",urlPatterns = "/*")
@@ -14,8 +15,10 @@ public class BaseFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException,IOException{
-        String username=(String)request.getAttribute("username");
-        String password=(String)request.getAttribute("password");
+        //HttpServletRequest extends ServletRequest 都是接口
+        HttpServletRequest r=(HttpServletRequest)request;
+        String username=r.getParameter("username");
+        String password=r.getParameter("password");
         System.out.println(username+password);
         chain.doFilter(request,response);
     }
